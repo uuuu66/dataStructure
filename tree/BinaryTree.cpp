@@ -3,7 +3,7 @@
 using namespace std;
 
 BTreeNode* MakeBTreeNode(void) {
-	BTreeNode* nd = (BTreeNode*)malloc(sizeof(BTreeNode));
+	BTreeNode* nd = new BTreeNode;
 	nd->left = NULL;
 	nd->right = NULL;
 	return nd;
@@ -50,4 +50,13 @@ void PostOrderTraverse(BTreeNode* bt, VisitFunc action) {
 	PostOrderTraverse(bt->left, action);
 	PostOrderTraverse(bt->right, action);
 	action(bt->data);
+}
+void DeleteTree(BTreeNode* root) {
+	if (root == NULL) {
+		return;
+	}
+	DeleteTree(root->left);
+	DeleteTree(root->right);
+	delete(root);
+	root = NULL;
 }
