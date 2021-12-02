@@ -1,4 +1,6 @@
-#define BinaryTree_H
+
+#include <stdio.h>
+#include <stdlib.h>
 
 typedef int BTData;
 typedef struct _bTreeNode
@@ -15,9 +17,10 @@ BTreeNode* GetLeftSubTree(BTreeNode* bt);
 BTreeNode* GetRigthSubTree(BTreeNode* bt);
 void MakeRightSubTree(BTreeNode* Main, BTreeNode* sub);
 void MakeLeftSubTree(BTreeNode* Main, BTreeNode* sub);
-typedef void (*VisitFunc)(BTData data);
+typedef void (*VisitFunc)(BTreeNode* bt);
 
 void InOrderTraverse(BTreeNode* bt,VisitFunc action);
 void PreOrderTraverse(BTreeNode* bt, VisitFunc action);
 void PostOrderTraverse(BTreeNode* bt, VisitFunc action);
 
+void DeleteTree(BTreeNode* root);
