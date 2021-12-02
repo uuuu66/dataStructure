@@ -27,7 +27,27 @@ void MakeLeftSubTree(BTreeNode* main, BTreeNode* sub) {
 }
 void MakeRightSubTree(BTreeNode* main, BTreeNode* sub) {
 	if (main->right != NULL)
-		free(main->right)
+		free(main->right);
 		main->right = sub;
 }
-
+void InOrderTraverse(BTreeNode* bt, VisitFunc action) {
+	if (bt == NULL)
+		return;
+	InOrderTraverse(bt->left,action);
+	action(bt->data);
+	InOrderTraverse(bt->right, action);
+}
+void PreOrderTraverse(BTreeNode* bt, VisitFunc action) {
+	if (bt == NULL)
+		return;
+	action(bt->data);
+	PreOrderTraverse(bt->left, action);
+	PreOrderTraverse(bt->right, action);
+}
+void PostOrderTraverse(BTreeNode* bt, VisitFunc action) {
+	if (bt == NULL)
+		return;
+	PostOrderTraverse(bt->left, action);
+	PostOrderTraverse(bt->right, action);
+	action(bt->data);
+}
