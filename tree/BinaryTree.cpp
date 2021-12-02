@@ -22,12 +22,12 @@ BTreeNode* GetRightSubTree(BTreeNode* bt) {
 }
 void MakeLeftSubTree(BTreeNode* main, BTreeNode* sub) {
 	if (main->left != NULL)
-		free(main->left);
+		delete(main->left);
 	main->left = sub;
 }
 void MakeRightSubTree(BTreeNode* main, BTreeNode* sub) {
 	if (main->right != NULL)
-		free(main->right);
+		delete(main->right);
 		main->right = sub;
 }
 void InOrderTraverse(BTreeNode* bt, VisitFunc action) {
